@@ -9,6 +9,14 @@ from omegaconf import OmegaConf
 from . import MODEL_SIZE, TASK_SET
 
 
+def _original_cwd() -> Path:
+    """Return Hydra's original cwd when available, else the process cwd."""
+    try:
+        return Path(hydra.utils.get_original_cwd())
+    except ValueError:
+        return Path.cwd()
+
+
 def cfg_to_dataclass(cfg, frozen=False):
     """
     Converts an OmegaConf config to a dataclass object.
@@ -65,7 +73,7 @@ def parse_cfg(cfg: OmegaConf) -> OmegaConf:
     cfg.multitask = cfg.task in TASK_SET.keys()
 
     default_work_dir = (
-        Path(hydra.utils.get_original_cwd())
+        _original_cwd()
         / "logs"
         / cfg.task
         / str(cfg.seed)
