@@ -1,3 +1,7 @@
+env_source: mbdpo
+newt_root: third_party/newt
+mmbench_root: third_party/newt
+task_conditioning: id
 defaults:
     - override hydra/launcher: submitit_local
 
