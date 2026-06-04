@@ -1,5 +1,6 @@
 env_source: mbdpo
 newt_root: third_party/newt
+newt_obs_mode: state
 mmbench_root: third_party/newt
 task_conditioning: id
 defaults:
