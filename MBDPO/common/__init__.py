@@ -144,3 +144,10 @@ TASK_SET = {
         "mw-hand-insert",
     ],
 }
+
+# Read-only Newt/MMBench task-set aliases. Importing this module parses metadata
+# only; it does not import Newt environments or instantiate environments.
+from .mmbench import MMBENCH_TASK_SET_ALIASES
+
+TASK_SET.update(MMBENCH_TASK_SET_ALIASES)
+
