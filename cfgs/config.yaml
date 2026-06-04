@@ -88,7 +88,7 @@ vmin: -10
 vmax: +10
 
 # architecture
-model_size: 6 # unit: million
+model_size: 5 # unit: million
 num_enc_layers: 2
 enc_dim: 256
 num_channels: 32
