@@ -1,6 +1,6 @@
 import numpy as np
 import gymnasium as gym
-from envs.wrappers.timeout import Timeout
+from .wrappers.timeout import Timeout
 
 MYOSUITE_TASKS = {
     "myo-reach": "myoHandReachFixed-v0",
