@@ -33,6 +33,7 @@ try:
     from envs.mujoco import make_env as make_mujoco_env
 except:
     make_mujoco_env = missing_dependencies
+from MBDPO.envs.newt import make_env as make_newt_env
 
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -64,7 +65,9 @@ def make_env(cfg):
     Make an environment for TD-MPC2 experiments.
     """
     gym.logger.set_level(40)
-    if cfg.multitask:
+    if getattr(cfg, "env_source", "mbdpo") == "newt":
+        env = make_newt_env(cfg)
+    elif cfg.multitask:
         env = make_multitask_env(cfg)
 
     else:
